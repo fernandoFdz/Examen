@@ -1,0 +1,117 @@
+Funciones:
+**********************************************************************************
+HWND GetDlgItem (
+   HWND hDlg, // manejador del cuadro de diálogo
+   int nIDDlgItem // identificador de control
+);
+ 
+Parámetros
+hDlg
+Identifica el cuadro de diálogo que contiene el control.
+nIDDlgItem
+Especifica el identificador del control que se recuperará.
+
+-----------------------------------------
+
+La macro DialogBox crea un cuadro de diálogo modal desde un recurso de plantilla de cuadro de diálogo. DialogBox no devuelve el control hasta que la función de devolución de llamada especificada finaliza el cuadro de diálogo modal llamando a la función EndDialog. La macro DialogBox usa la función DialogBoxParam.
+
+int DialogBox (
+  HINSTANCE hInstance, // manejar a la instancia de la aplicación
+  LPCTSTR lpTemplate, // identifica la plantilla del cuadro de diálogo
+  HWND hWndParent, // manejar a la ventana del propietario
+  DLGPROC lpDialogFunc // puntero al procedimiento de cuadro de diálogo
+);
+ 
+Parámetros
+hInstance
+Identifica una instancia del módulo cuyo archivo ejecutable contiene la plantilla del cuadro de diálogo.
+lpTemplate
+Identifica la plantilla del cuadro de diálogo. Este parámetro es el puntero a una cadena de caracteres terminada en nulo que especifica el nombre de la plantilla de cuadro de diálogo o un valor entero que especifica el identificador de recurso de la plantilla de cuadro de diálogo. Si el parámetro especifica un identificador de recurso, su palabra de orden superior debe ser cero y su palabra de orden inferior debe contener el identificador. Puede usar la macro MAKEINTRESOURCE para crear este valor.
+hWndParent
+Identifica la ventana que posee el cuadro de diálogo.
+lpDialogFunc
+Puntero al procedimiento de cuadro de diálogo. Para obtener más información sobre el procedimiento de cuadro de diálogo, vea DialogProc.
+
+-----------------------------------------
+
+La función ShowWindow establece el estado de visualización de la ventana especificada.
+
+BOOL ShowWindow (
+  HWND hWnd, // manejar a la ventana
+  int nCmdShow // muestra el estado de la ventana
+);
+ 
+Parámetros
+hWnd
+Manejar a la ventana.
+nCmdShow
+Especifica cómo se mostrará la ventana. Este parámetro se ignora la primera vez que una aplicación llama a ShowWindow, si el programa que lanzó la aplicación proporciona una estructuraSTARTUPINFO. De lo contrario, la primera vez que se invoca ShowWindow, el valor debe ser el valor obtenido por la función WinMain en su parámetro nCmdShow. En llamadas posteriores, este parámetro puede ser uno de los siguientes valores: Valor Significado
+SW_FORCEMINIMIZE Windows NT 5.0 y posterior: Minimiza una ventana, incluso si el hilo que posee la ventana está colgado. Este indicador solo se debe usar cuando se minimizan las ventanas de un hilo diferente.
+SW_HIDE Oculta la ventana y activa otra ventana.
+SW_MAXIMIZE Maximiza la ventana especificada.
+SW_MINIMIZE Minimiza la ventana especificada y activa la siguiente ventana de nivel superior en el orden Z.
+SW_RESTORE Activa y muestra la ventana. Si la ventana se minimiza o maximiza, el sistema la restaura a su tamaño y posición originales. Una aplicación debe especificar este indicador al restaurar una ventana minimizada.
+SW_SHOW Activa la ventana y la muestra en su tamaño y posición actuales.
+
+-----------------------------------------
+
+La función EndDialog destruye un cuadro de diálogo modal, haciendo que el sistema 
+finalice cualquier procesamiento para el cuadro de diálogo.
+
+BOOL EndDialog (
+   HWND hDlg, // manejar al cuadro de diálogo
+   int nResult // valor para devolver
+);
+ 
+Parámetros
+hDlg
+Identifica el cuadro de diálogo que se destruirá.
+nResult
+Especifica el valor que se devolverá a la aplicación desde la función que creó el cuadro de diálogo.
+
+-------------------------------------------
+
+La función SetWindowPos cambia el tamaño, la posición y el orden Z de un elemento secundario, emergente o ventana de nivel superior. Las ventanas secundarias,
+emergentes y para niños se ordenan según su apariencia en la pantalla. La ventana más alta recibe el rango más alto y es la primera ventana en el orden Z.
+
+BOOL SetWindowPos (
+  HWND hWnd, // manejar a la ventana
+  HWND hWndInsertAfter, // ubicación-orden de manejo
+  int X, // posición horizontal
+  int Y, // posición vertical
+  int cx, // ancho
+  int cy, // altura
+  UINT uFlags // marcadores de posicionamiento de ventanas
+);
+ 
+Parámetros
+hWnd
+Manejar a la ventana.
+hWndInsertAfter
+Diríjase a la ventana para preceder la ventana posicionada en el orden Z. Este parámetro debe ser un identificador de ventana o uno de los siguientes valores: Valor Significado
+HWND_BOTTOM Coloca la ventana en la parte inferior del orden Z. Si el parámetro hWnd identifica una ventana superior, la ventana pierde su estado superior y se coloca
+en la parte inferior de todas las demás ventanas.
+////////////////////////////////////////////////////////////////////////
+Estructuras:
+
+RECT -> define las coordenadas de las esquinas superior izquierda e inferior derecha de un rectángulo.
+
+typedef struct _RECT {
+     LARGO izquierda;
+     LARGO arriba;
+     LARGO a la derecha;
+     LARGO abajo;
+} RECTAR;
+ 
+
+izquierda
+Especifica la coordenada x de la esquina superior izquierda del rectángulo.
+parte superior
+Especifica la coordenada y de la esquina superior izquierda del rectángulo.
+derecho
+Especifica la coordenada x de la esquina inferior derecha del rectángulo.
+fondo
+Especifica la coordenada y de la esquina inferior derecha del rectángulo.
+
+
+

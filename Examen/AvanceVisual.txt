@@ -1,0 +1,11 @@
+Nombre: Fernando Granja Fernandez	
+Proyecto: Examen 
+Practica: Mensajes de botones, Pushbotton
+Pagina: 31
+
+
+objetivo del examen.
+maneja los atributos de los botones con las funciones
+GetDlgItem, GetWindowRect, SetWindowPos,ShowWindow
+
+NOTA: al mover el boton creado se mueve hacia arriba y no supe corregir eso.
