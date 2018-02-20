@@ -264,6 +264,7 @@ LRESULT CALLBACK Menu(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 						ShowWindow(hOcultar, SW_SHOW);
 						ShowWindow(hMover, SW_SHOW);
 						ShowWindow(hCreado, SW_SHOW);
+						SendMessage(hCreado, BM_SETSTATE, 0, 1);
 						SetWindowPos(hCreado, HWND_NOTOPMOST,  390,160, SWP_NOMOVE,SWP_NOMOVE, SWP_NOSIZE|SWP_NOZORDER); 
 					break;
 					
